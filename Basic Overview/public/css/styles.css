@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body section in styles.scss */
+body {
+  background-color: #272727;
+  color: #fff;
+}
+
+
+.main {
+	/* From @mixin flexCenter in styles.scss */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+	/* From @include flexCenter(row) in .main{} in styles.scss */
+  flex-direction: row;
+
+  /* From regular css in Scss file */
+  width: calc(80% - 40%);
+  /* From 80% - 40% line in Scss file */
+  width: 60%;
+  margin: 40px auto;
+}
+
+/* From #{&}-paragraph1 and #{&}-paragraph2 in styles.scss */
+.main .main-paragraph1, .main .main-paragraph2 {
+  font-weight: 900;
+}
+
+/* From &:hover within #{&}-paragraph1 and @extend .main-paragraph1 within #{&}-paragraph2 */
+.main .main-paragraph1:hover, .main .main-paragraph2:hover {
+  color: pink;
+}
+
+/* From &:hover within #{&}-paragraph2 */
+.main .main-paragraph2:hover {
+  color: #ff652f;
+}
+
+/* From @include mobile within .main && @mixin mobile{} */
+@media (max-width: 800px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
+/* From @include theme && @mixin them($light-theme : true) {} */
+.light {
+  background: white;
+  color: black;
+}

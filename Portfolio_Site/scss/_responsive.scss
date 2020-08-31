@@ -1,0 +1,74 @@
+@include media-md{
+	.menu-btn{
+		visibility:hidden;
+	}
+
+	.nav{
+		visibility:visible;
+
+		.menu-nav{
+			display:block;
+			transform: translateY(0);
+			height:100%;
+			background: transparent;
+			// Changed from right aligned to center aligned because I think it looks better symmetrical
+			text-align: center;
+
+			&-item{
+				display:inline;
+				padding-right: 1.5rem;
+			}
+
+			&-link{
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+	.about-bio{
+		font-size:1.3rem;
+	}
+
+	.projects{
+		&-bio-image{
+			height:40vh;
+		}
+
+		&-items{
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.text-secondary{
+			font-size:3rem;
+		}
+	}
+
+	// Removed this grid-template column because it ends up with 2 items in left column
+	// and one item in the right column which makes the page looks too asymmetrical
+
+	// .contact-list{
+	// 	grid-template-columns: repeat(2,1fr)
+	// }
+
+
+}
+
+
+@include media-lg{
+	.projects{
+		&-items{
+			grid-template-columns: repeat(3,1fr)
+		}
+	}
+
+	.contact-list{
+		grid-template-columns: repeat(3,1fr)
+	}
+}
+
+
+@include media-xl{
+	.projects-bio-image{
+		height:50vh;
+	}
+}

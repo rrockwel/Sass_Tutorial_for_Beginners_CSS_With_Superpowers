@@ -1,0 +1,97 @@
+// To include partials (i.e. _resets.scss) you use an import
+@import './resets';
+
+// Include variables partial
+@import './variables';
+
+// Mixins with Sass
+// Mixins can also accept arguments
+
+// !!!!!! Mixins should be used to define styles !!!!!!! */
+@mixin flexCenter ($direction){
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+};
+
+// Mixins can be used to choose themes
+@mixin theme($light-theme : true){
+	@if $light-theme {
+		background: lighten($primary-color, 100%);
+		color: darken($text-color, 100%);
+	}
+};
+
+
+// Mixins can also be used to help with media queries
+@mixin mobile{
+	@media (max-width : $mobile){
+		@content;
+	}
+};
+
+
+
+// Functions within sass
+// !!!! Functions should be used to compute, and return, values !!!!! 
+@function weight($weight-name){
+	@return map-get($font-weights, $weight-name)
+};
+
+
+
+
+
+body {
+	background-color: $primary-color;
+	color: $text-color;
+	// Map can be traversed at multiple points, allowing for control of all these points from variable declaration
+};
+
+.main{
+	@include flexCenter (row);
+	// You can perform regular calculations within css
+	width: calc(80% - 40%);
+	// In sass, you don't need to include the calc
+	width: 80%-20%;
+	// But, in Sass, you can't mix types (e.g. width: 80% - 300px won't work) like you can in normal css
+	margin: 40px auto;
+
+	// Rules can also be nested in sass file
+	// #{} allows for interpolation, which will include the .main selector
+	// & can be used to replicate the parent selector (i.e. '.main')
+	// Therefore, this #{&}-paragraph selector will be translated to '.main .main-paragraph' in css
+	#{&}-paragraph1{
+		// weight function used to return font-weight from $font-weights with weight-name 'bold'
+		font-weight: weight(bold);
+
+		// & here is replaced by '.main .main-paragraph' thereby translating to '.main .main-paragraph:hover' in plain css
+		&:hover{
+			color:pink;
+		};
+	};
+
+	// Extension of #{&}-paragraph1...
+	#{&}-paragraph2{
+		// ... which includes font-weight: bold and hover{color:pink}
+		@extend .main-paragraph1;
+		&:hover{
+			color:$accent-color;
+		};
+
+
+	}
+
+	// Controls content when max-width is $mobile (i.e. 800px) or less
+	@include mobile{
+		flex-direction: column;
+	}
+
+
+};
+
+.light {
+	@include theme($light-theme: true)
+};
+

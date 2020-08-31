@@ -1,0 +1,49 @@
+.contact {
+	height:100%;
+	padding-top: 40vh;
+	overflow: hidden;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: 
+		linear-gradient(
+			to right,
+			rgba($primary-color, 0.8),
+			rgba($primary-color, 0.2)
+			),
+		url('../img/model-1.jpg') center top;
+	background-size:cover;
+
+	h2{
+		font-size: 3rem;
+		margin-bottom: 2rem;
+	}
+
+	&-list{
+		display:grid;
+		grid-template-columns: 1fr;
+		grid-gap: 2rem;
+		font-size: 1.5rem;
+		text-shadow: 5px 5px 5px $shadow-color;
+	}
+
+	.social-icons{
+		position: initial;
+		margin-top: 2rem;
+	}
+
+	.text-secondary{
+		text-shadow: 5px 5px 5px $shadow-color;
+
+		// Added secondary-color so clickable links of contact information were the same color 
+
+		& a{
+			color: $secondary-color;
+		}
+	}
+}
+
+.fas{
+	margin:9px;
+}

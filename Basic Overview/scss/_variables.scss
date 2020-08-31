@@ -1,0 +1,13 @@
+// Variables can be declared within sass file
+$primary-color: #272727;
+$accent-color:#ff652f;
+$text-color:#fff;
+
+// Maps can also be declared within sass file
+$font-weights: (
+	"regular": 400,
+	"medium": 500,
+	"bold": 900
+);
+
+$mobile: 800px;
